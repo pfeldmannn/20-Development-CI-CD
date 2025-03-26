@@ -19,11 +19,10 @@ jobs:
               with: 
                   node-version: 20.18.0
 
-            - name: Install Dependencies
-              run: npm install
-
-            - name: Build App
-              run: npm run build
-
-            - name: Run Cypress Component Test
-              run: npm run test-component
+            - name: Cypress run
+              uses: cypress-io/github-action@v6
+              with:
+                build: npm run build
+                start: npm start
+                browser: chrome 
+                
