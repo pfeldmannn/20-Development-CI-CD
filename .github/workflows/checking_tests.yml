@@ -25,8 +25,5 @@ jobs:
             - name: Build App
               run: npm run build
 
-            - name: Impliment Seeds
-              run: npm run seed
-
             - name: Run Cypress Component Test
               run: npm run test
