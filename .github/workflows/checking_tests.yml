@@ -25,9 +25,10 @@ jobs:
             - name: Build App
               run: npm run build
 
-            - name: cypress install
-              run: npx cypress install
+            - name: Checkout
+              uses: actions/checkout@v4
               
-
-            - name: Run Cypress Component Test
-              run: npm run test
+            - name: Cypress run
+              uses: cypress-io/github-action@v6
+              with:
+                component: true
