@@ -1,13 +1,16 @@
 name: Deploy to Render
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main 
 
 jobs: 
   ci:
-    name: Deploy to Render
+    name: deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -15,8 +18,8 @@ jobs:
         with:
           ref: main
 
-      - name: Deploy
-        if: github.ref == 'refs/heads/main'
+      - name: Deploy to Render
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
